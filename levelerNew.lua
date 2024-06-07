@@ -32,21 +32,23 @@ local function changeLine()
     turtle.turnRight()
     if not turtle.forward() then
         turtle.dig()
+        turtle.forward()
     end
-    turtle.forward()
     turtle.turnRight()
+    turtle.forward()
     if z >= zMin and z <= zMax then
         walk()
     end
 end
 
-local function walk()
+function walk()
     while x < xMax and x > xMin and z > zMin and z < zMax do
         if turtle.getFuelLevel() > 0 then
+            placeBlockBelow()
+            placeBlockBelow()
             if not turtle.forward() then
                 turtle.dig()
             end
-            placeBlockBelow()
             turtle.forward()
             updateLocation()
         else
